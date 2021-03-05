@@ -5,7 +5,7 @@ const port = 3000
 app.get('/verifica',(req,res,next)=>{
   var texto=req.query.texto || '';
   var respuesta='';
-  var espera=["malo"]
+  var espera=["null"]
   var correcto=false;
   if(texto!='') {
     var letras=texto.split("")
@@ -101,8 +101,9 @@ app.get('/verifica',(req,res,next)=>{
   res.send(respuesta)
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.post('/hello/:name', (req, res) => {
+  var name=req.params.name
+  res.send("Hola "+name)
 })
 
 app.listen(port, () => {
